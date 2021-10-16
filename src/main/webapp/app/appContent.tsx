@@ -6,11 +6,11 @@ import React from 'react';
 const AppContent = () => {
   return (
     <div className="container-fluid view-container" id="app-view-container">
-      <Card className="jh-card">
-        <ErrorBoundary>
-          <AppRoutes />
-        </ErrorBoundary>
-      </Card>
+      {/* <Card className="jh-card"> */}
+      <ErrorBoundary>
+        <AppRoutes />
+      </ErrorBoundary>
+      {/* </Card> */}
     </div>
   );
 };

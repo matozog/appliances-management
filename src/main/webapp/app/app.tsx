@@ -1,4 +1,5 @@
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
 import 'app/config/dayjs.ts';
 
