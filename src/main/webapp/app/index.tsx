@@ -1,15 +1,14 @@
+import AppComponent from './app';
+import ErrorBoundary from './shared/error/error-boundary';
+import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { clearAuthentication } from './shared/reducers/authentication';
 import getStore from './config/store';
+import { loadIcons } from './config/icon-loader';
 import { registerLocale } from './config/translation';
 import setupAxiosInterceptors from './config/axios-interceptor';
-import { clearAuthentication } from './shared/reducers/authentication';
-import ErrorBoundary from './shared/error/error-boundary';
-import AppComponent from './app';
-import { loadIcons } from './config/icon-loader';
 
 const store = getStore();
 registerLocale(store);
@@ -26,7 +25,7 @@ const render = Component =>
   ReactDOM.render(
     <ErrorBoundary>
       <Provider store={store}>
-        <div>
+        <div className="h-100 w-100">
           <Component />
         </div>
       </Provider>
