@@ -1,22 +1,36 @@
+import { FAILURE, REQUEST, SUCCESS } from 'app/config/constants';
+
 import { IAppliance } from '../../models/appliances.model';
-import { appliancesMockData } from './mockedData';
 import types from './types';
 
 const initialState = {
-  appliancesList: appliancesMockData,
+  appliancesList: [] as IAppliance[],
+  isLoading: false,
 };
 
 export type IAppliancesState = Readonly<typeof initialState>;
 
 export default (state: IAppliancesState = initialState, action): IAppliancesState => {
-  const { type, payload } = action;
+  const { error, type, payload } = action;
 
-  if (type === types.FETCH_APPLIANCES) {
-    return {
-      ...state,
-      appliancesList: payload.data,
-    };
+  switch (type) {
+    case REQUEST(types.FETCH_APPLIANCES):
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case SUCCESS(types.FETCH_APPLIANCES):
+      return {
+        ...state,
+        appliancesList: payload.data,
+        isLoading: false,
+      };
+    case FAILURE(types.FETCH_APPLIANCES):
+      return {
+        ...state,
+        isLoading: false,
+      };
+    default:
+      return state;
   }
-
-  return state;
 };

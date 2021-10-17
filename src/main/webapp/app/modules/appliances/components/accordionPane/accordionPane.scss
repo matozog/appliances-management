@@ -1,0 +1,13 @@
+@import 'app/shared/styles/colors.scss';
+
+.accordion-pane-container {
+  padding: 0.5em;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background: white;
+
+  .accordion-pane-header {
+    padding: 0.5em;
+    cursor: pointer;
+  }
+}

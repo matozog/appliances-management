@@ -6,6 +6,10 @@ export default config;
 
 export const SERVER_API_URL = process.env.SERVER_API_URL;
 
+export const SUCCESS = (type: string) => `${type}_FULFILLED`;
+export const REQUEST = (type: string) => `${type}_REQUEST`;
+export const FAILURE = (type: string) => `${type}_FAILURE`;
+
 export const AUTHORITIES = {
   ADMIN: 'ROLE_ADMIN',
   USER: 'ROLE_USER',

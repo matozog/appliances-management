@@ -1,31 +1,32 @@
 import './appliances.scss';
 
-import React, { useState } from 'react';
+import * as appliancesDuck from 'app/modules/appliances/state/appliances';
 
-import ActionsPanel from './components/actionsPanel';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import AccordionPane from '../../components/accordionPane/accordionPane';
 import ApplianceTableInfo from '../../components/applianceTableInfo/applianceTableInfo';
 import AppliancesCarousel from '../../components/vehiclesCarousel/appliancesCarousel';
 import { IRootState } from 'app/config/store';
-import { useSelector } from 'react-redux';
 
 const Appliances = () => {
-  const [isDetailsOpen, setDetailsOpen] = useState(false);
-
   const appliancesList = useSelector((state: IRootState) => state.appliances.appliances.appliancesList);
 
-  const toggleDetailsState = () => setDetailsOpen(!isDetailsOpen);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(appliancesDuck.operations.fetchAppliances());
+  }, []);
 
   return (
     <div className="appliances-container">
-      {/* <div className="appliances-actions-panel">
-        <ActionsPanel toggleDetailsState={toggleDetailsState} />
-      </div> */}
-      <div className="appliances-carousel">
+      <AccordionPane paneTitle="Appliance name" styles={{ marginBottom: '1em' }}>
         <AppliancesCarousel appliancesList={appliancesList} />
-      </div>
-      <div className="appliances-table-info">
+      </AccordionPane>
+      <AccordionPane paneTitle="Additionaly information">
         <ApplianceTableInfo />
-      </div>
+      </AccordionPane>
     </div>
   );
 };

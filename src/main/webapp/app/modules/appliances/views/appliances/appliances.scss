@@ -7,31 +7,4 @@
     height: 50px;
     margin-bottom: 2em;
   }
-
-  .appliances-carousel {
-    height: calc(400px + 1em);
-    padding: 0.5em;
-    border: 1px solid $border-color;
-    border-radius: 5px;
-    background: white;
-
-    // &--expanded {
-    //   @extend .appliances-carousel;
-    //   height: 50% !important;
-    // }
-  }
-
-  .appliances-table-info {
-    height: calc(100% - 50px - 4em - 400px);
-    margin-top: 1em;
-    padding: 0.5em;
-    border: 1px solid $border-color;
-    border-radius: 5px;
-    background: white;
-
-    // &--expanded {
-    //   @extend .appliances-table-info;
-    //   height: 40% !important;
-    // }
-  }
 }
